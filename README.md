@@ -74,8 +74,9 @@ To enable LIVE trading, you must set `LIVE_TRADING=YES_I_UNDERSTAND` in your `.e
 - **ML Filter**: A classifier trained on historical breakouts to predict the probability of a "successful" move.
 
 ## Disclaimer
-This software is for educational purposes only. Do not trade with money you cannot afford to lose. Past performance does not guarantee future results.
+This software is for educational purposes only. Do not trade with money you cannot afford to lose. Past performance does not guarantee future results. It is not investment advice
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
