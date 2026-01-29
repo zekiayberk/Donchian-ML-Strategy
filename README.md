@@ -1,6 +1,5 @@
 # Donchian Breakout + ML Filtering Strategy
 
-![Trading Bot Banner](trading_bot_banner.png)
 
 ## Overview
 This project is an advanced algorithmic trading system designed for cryptocurrency markets (primarily Binance Futures). It combines a classic **Donchian Breakout** strategy with **ATR-based Trailing Stops** and an optional **Machine Learning (LightGBM/RandomForest) signal filter** to reduce false breakouts.
@@ -79,3 +78,4 @@ This software is for educational purposes only. Do not trade with money you cann
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
