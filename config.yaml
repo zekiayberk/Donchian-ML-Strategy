@@ -1,0 +1,74 @@
+# Donchian Breakout + ATR Trailing Stop Stratejisi Konfigürasyonu
+# Veri Ayarları
+data:
+  symbol: "BTCUSDT"
+  timeframe: "1h"
+  start_date: "2023-01-01"
+  end_date: "2024-01-01"
+  exchange: "binance"
+  data_dir: "data/storage"
+
+# Strateji Parametreleri
+strategy:
+  donchian_period: 89 # Robustness Winner
+  atr_period: 14
+  stop_loss_atr_multiplier: 3.0 # Robustness Winner
+  trailing_stop_active: false # Robustness Winner
+  
+  # Filtreler
+  # Filtreler (Ablation: Base/Disabled is better)
+  adx_filter_active: false
+  adx_threshold: 20
+  
+  # Yeni Özellikler
+  breakout_strength_threshold: 0.0 # Base setup is more robust
+  stop_cooldown_bars: 12 # Stop sonrası N bar bekle
+  stop_cooldown_trail: 3 # Trail stop sonrası N bar bekle
+  
+  volatility_filter_active: false
+  volatility_threshold: 0.01
+
+# ML Filtresi (Yeni)
+ml:
+  enabled: false # run_backtest.py --ml_on ile override edilir
+  model_path: "ml_model.pkl"
+  horizon_bars: 48 # 2 gün (1h)
+  tp_r_multiple: 1.0
+  model: "lightgbm" # veya "randomforest"
+  train_days: 180
+  valid_days: 30
+  
+  threshold_offset: 0.10 # Sensitivity Winner (Sweet Spot)
+  
+  # Guard Settings (Fold Rescue)
+  guard_enabled: true
+  guard_min_signals_before_eval: 5 # Yeterli veri olmadan karar verme
+  guard_min_take_rate: 0.10     # Base take rate bunun altındaysa guard aç
+  guard_top_k: 3                # Fold başına max rescue sayısı
+  guard_quantile: 0.70          # En iyi %30 (Prob dağılımı 70. persentil üstü)
+  guard_floor: 0.30             # Min prob floor (0.30 altı asla alınmaz)
+  guard_hist_maxlen: 500        # Prob geçmişi sığası
+  guard_debug: false            # Detaylı loglama (Prod: false)
+  
+# Risk Yönetimi
+risk:
+  risk_per_trade: 0.005 # %0.5 sermaye riski
+  max_daily_loss: 0.03 # %3
+  max_drawdown_limit: 0.10 # %10
+  leverage: 1 # Futures için kaldıraç
+  max_open_positions: 1
+
+# Backtest Ayarları
+backtest:
+  initial_capital: 10000
+  commission_futures_maker: 0.0002
+  commission_futures_taker: 0.0004
+  commission_spot_maker: 0.001
+  commission_spot_taker: 0.001
+  slippage_bps: 2
+  funding_rate_model: false
+  mode: "A" # A: Sinyal on Close -> Enter on Open (Next Bar) | B: Sinyal on Close -> Enter on Close (Same Bar)
+
+# Loglama
+logging:
+  level: "INFO"

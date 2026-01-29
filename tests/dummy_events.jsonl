@@ -1,0 +1,7 @@
+{"timestamp": "2026-01-27T10:00:00", "event": "BOOT_SEAL", "data": {"mode": "TESTNET"}}
+{"timestamp": "2026-01-27T10:01:00", "event": "FILL", "data": {"qty": "1.0", "price": "50000.0", "side": "LONG"}}
+{"timestamp": "2026-01-27T10:05:00", "event": "FILL", "data": {"qty": "1.0", "price": "50500.0", "side": "SHORT"}}
+{"timestamp": "2026-01-27T10:10:00", "event": "LATENCY", "data": {"data_latency_ms": 150.0}}
+{"timestamp": "2026-01-27T10:11:00", "event": "LATENCY", "data": {"data_latency_ms": 120.0}}
+{"timestamp": "2026-01-27T10:15:00", "event": "ORDER_REJECTED", "data": {"reason": "Test Reject"}}
+{"timestamp": "2026-01-27T10:20:00", "event": "LIVE_ARM_FAILED", "data": {"reason": "Test Arm Fail"}}

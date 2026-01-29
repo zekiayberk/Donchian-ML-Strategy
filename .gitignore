@@ -1,0 +1,37 @@
+# Secrets
+.env
+keys.json
+
+# Runtime Artifacts & Logs
+*.log
+*_log.txt
+debug_*.txt
+persistence_test.txt
+events.jsonl
+paper_state.json
+paper_state.json.bak
+logs/
+reports/
+results/
+output/
+
+# Data & Results
+*.csv
+*.png
+*.json
+!config.yaml
+!package.json
+data/storage/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+*.pkl
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
